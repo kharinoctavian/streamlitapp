@@ -44,16 +44,14 @@ knn=KNeighborsClassifier(n_neighbors=5)
 knn.fit(X_train,Y_train)
 Y_PredKNN=knn.predict(X_test)
 
-filename = 'knn.sav'
-
 #Saving the Model
-pickle_out = open("knn.sav", "wb") 
+pickle_out = open("knn.pkl", "wb") 
 pickle.dump(knn, pickle_out) 
 pickle_out.close()
 
 def predict(arr):
     # Load the model
-    with open('knn.sav', 'rb') as f:
+    with open('knn.pkl', 'rb') as f:
         model = pickle.load(f)
     classes = {0:'tidak delay',1:'delay kurang dari sama dengan 4 jam',2:'delay > 4 jam'}
     # return prediction as well as class probabilities
